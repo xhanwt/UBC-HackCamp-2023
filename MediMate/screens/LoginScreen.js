@@ -1,14 +1,22 @@
 import React, {useState} from 'react';
 import { View, Text, TextInput, Button } from  'react-native';
 
-
 const LoginScreen = ({ navigation }) => {
-    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleLogin = () => {
-
+    const handleLogin = async () => {
+        try {
+            const user = await authService.login(email, password);
+      
+            // Navigate to the next screen on successful login
+            // You can replace 'NextScreen' with the name of your next screen
+            navigation.navigate('UserProfile', { user });
+          } catch (error) {
+            // Handle login error
+          }
     };
+    
 
     return (
         <View style={styles.container}>
@@ -22,7 +30,6 @@ const LoginScreen = ({ navigation }) => {
             <Text style={styles.title}>Login</Text>
 
             <TextInput
-                style={styles.input}
                 placeholder="Username"
                 value={username}
                 onChangeText={(text) => setUsername(text)}
@@ -31,6 +38,7 @@ const LoginScreen = ({ navigation }) => {
             <TextInput
                 style={styles.input}
                 placeholder="Password"
+                secureTextEntry
                 value={password}
                 onChangeText={(text) => setPassword(text)}
                 secureTextEntry
