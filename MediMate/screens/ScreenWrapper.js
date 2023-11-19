@@ -13,13 +13,14 @@ const ScreenWrapper = ({ children }) => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'flex-end', // Align content at the bottom
-  },
-  content: {
-    flex: 1,
-  },
-});
+    container: {
+      flex: 1,
+    },
+    content: {
+      flex: 1,
+      marginBottom: 0, // Adjust this margin to control the space between content and bottom tab navigator
+    },
+  });
+  
 
 export default ScreenWrapper;

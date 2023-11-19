@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, Image, StyleSheet } from 'react-native';
+import { View, Text, TextInput, Image, ScrollView, StyleSheet } from 'react-native';
 import axios from 'axios';
 import ScreenWrapper from './ScreenWrapper';
 
@@ -56,40 +56,44 @@ const MedicationSearch = () => {
   };
 
   return (
-      <View style={styles.container}>
-        <View style={styles.labelContainer}>
-          <Text style={styles.label}>Medication Name:</Text>
-          <TextInput
-            style={styles.input}
-            value={medicationName}
-            onChangeText={handleInputChange}
-          />
+    <ScreenWrapper>
+      <ScrollView>
+        <View style={styles.container}>
+          <View style={styles.labelContainer}>
+            <Text style={styles.label}>Medication Name:</Text>
+            <TextInput
+              style={styles.input}
+              value={medicationName}
+              onChangeText={handleInputChange}
+            />
+          </View>
+          <View style={styles.medicationInfo}>
+            {medicationData && (
+              <View>
+                <Text style={styles.title}>{medicationData.genericUse}</Text>
+                {medicationData.imageUrl && (
+                  <Image source={{ uri: medicationData.imageUrl }} style={styles.image} />
+                )}
+                <Text style={styles.info}>
+                  <Text style={styles.strong}>Description:</Text> {medicationData.description}
+                </Text>
+                <Text style={styles.info}>
+                  <Text style={styles.strong}>Dosage and Strengths:</Text>{' '}
+                  {medicationData.dosageAndStrengths}
+                </Text>
+                <Text style={styles.info}>
+                  <Text style={styles.strong}>Warnings and Cautions:</Text>{' '}
+                  {medicationData.warningsAndCautions}
+                </Text>
+                <Text style={styles.info}>
+                  <Text style={styles.strong}>Route:</Text> {medicationData.route}
+                </Text>
+              </View>
+            )}
+          </View>
         </View>
-        <View style={styles.medicationInfo}>
-          {medicationData && (
-            <View>
-              <Text style={styles.title}>{medicationData.genericUse}</Text>
-              {medicationData.imageUrl && (
-                <Image source={{ uri: medicationData.imageUrl }} style={styles.image} />
-              )}
-              <Text style={styles.info}>
-                <Text style={styles.strong}>Description:</Text> {medicationData.description}
-              </Text>
-              <Text style={styles.info}>
-                <Text style={styles.strong}>Dosage and Strengths:</Text>{' '}
-                {medicationData.dosageAndStrengths}
-              </Text>
-              <Text style={styles.info}>
-                <Text style={styles.strong}>Warnings and Cautions:</Text>{' '}
-                {medicationData.warningsAndCautions}
-              </Text>
-              <Text style={styles.info}>
-                <Text style={styles.strong}>Route:</Text> {medicationData.route}
-              </Text>
-            </View>
-          )}
-        </View>
-      </View>
+      </ScrollView>
+    </ScreenWrapper>
   );
 };
 
