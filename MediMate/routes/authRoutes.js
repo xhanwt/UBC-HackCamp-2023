@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt');
 const User = require('../models/User');
 const router = express.Router();
 
+
 router.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -14,7 +15,22 @@ router.post('/login', async (req, res) => {
       return res.status(404).json({ error: 'User not found' });
     }
 
-    const passwordMatch = await bcrypt.compare(password, user.password);
+    let passwordMatch;
+    console.log('Entered email:', email);
+    console.log('Entered password:', password);
+    console.log('Stored hashed password:', user.password);
+    console.log('Password match result:', passwordMatch);
+
+    try {
+      console.log('Before bcrypt.compare');
+      passwordMatch = await bcrypt.compare(password, user.password);
+      console.log('After bcrypt.compare');
+      console.log('Password match result:', passwordMatch);
+    }catch (compareError) {
+      console.error('Password comparison error: ', compareError);
+      return res.status(500).json({error: 'Internal server error'});
+    }
+    
 
     if (!passwordMatch) {
       return res.status(401).json({ error: 'Incorrect password' });
@@ -60,8 +76,8 @@ router.post('/signup', async (req, res) => {
       res.json({ success: true });
   
     } catch (error) {
-      console.error('Signup error:', error);
-      res.status(500).json({ error: 'Internal server error' });
+      console.error('Signup error:', json.stringify(error));
+      res.status(500).json({ error });
     }
   });
 

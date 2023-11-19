@@ -1,7 +1,7 @@
 //SignupScreen.js
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button } from 'react-native';
-import AuthService from '../services/authServices'; // Adjust the path accordingly
+import AuthService from '../services/authServices';
 import { useNavigation } from '@react-navigation/native';
 
 const SignupScreen = () => {

@@ -4,7 +4,7 @@ import axios from 'axios';
 const AuthService = {
   login: async (email, password) => {
     try {
-      const response = await axios.post('http://localhost:3000/api/login', {
+      const response = await axios.post('http://localhost:27017/api/login', {
         email,
         password,
       });
@@ -14,14 +14,14 @@ const AuthService = {
       return user;
     } catch (error) {
       // Handle login error
-      console.error('Login failed', error);
+      console.error('Login failed', error.toJSON());
       throw error;
     }
   },
 
   signup: async (email, password, name, gender, healthCardNumber) => {
     try {
-      const response = await axios.post('http://localhost:3000/api/signup', {
+      const response = await axios.post('http://localhost:27017/api/signup', {
         email,
         password,
         name,
@@ -33,12 +33,10 @@ const AuthService = {
       return response.data;
     } catch (error) {
       // Handle signup error
-      console.error('Signup failed', error);
+      console.error('Signup failed', error.toJSON());
       throw error;
     }
   },
-
-  // Add other authentication-related functions as needed
 };
 
 export default AuthService;

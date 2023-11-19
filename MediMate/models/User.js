@@ -19,6 +19,7 @@ const userSchema = new mongoose.Schema({
     medications: [medicationSchema],
 });
 
+
 userSchema.pre('save', async function (next) {
     try {
         // Only hash the password if it has been modified or is new
@@ -48,6 +49,7 @@ userSchema.methods.comparePassword = async function (candidatePassword) {
         throw error;
     };
 }
+
 
 const User = mongoose.model('User', userSchema);
 
