@@ -12,7 +12,6 @@ const ScreenWrapper = ({ children }) => {
   );
 };
 
-
 const styles = StyleSheet.create({
     container: {
       flex: 1,
