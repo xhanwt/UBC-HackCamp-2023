@@ -4,6 +4,7 @@ import { Text, View, Button, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 
+
 const HomeScreen = () => {
   const navigation = useNavigation();
 
@@ -21,27 +22,27 @@ const HomeScreen = () => {
 
 
 return (
-  <View style={styles.container}>
-    <Text style={styles.logoText}>MediMate</Text>
+    <View style={styles.container}>
+      <Text style={styles.logoText}>MediMate</Text>
 
-    <TouchableOpacity
-      style={[styles.button, styles.loginButton, isLoginHovered && styles.loginHovered]}
-      onPress={handleLoginPress}
-      onMouseEnter={() => setIsLoginHovered(true)}
-      onMouseLeave={() => setIsLoginHovered(false)}
-    >
-      <Button title="Login" onPress={handleLoginPress} style={[styles.buttonText, styles.loginText]}/>
-    </TouchableOpacity>
+      <TouchableOpacity
+        style={[styles.button, styles.loginButton, isLoginHovered && styles.loginHovered]}
+        onPress={handleLoginPress}
+        onMouseEnter={() => setIsLoginHovered(true)}
+        onMouseLeave={() => setIsLoginHovered(false)}
+      >
+        <Button title="Login" onPress={handleLoginPress} style={[styles.buttonText, styles.loginText]}/>
+      </TouchableOpacity>
 
-    <TouchableOpacity
-      style={[styles.button, styles.signUpButton, isSignUpHovered && styles.signUpHovered]}
-      onPress={handleSignUpPress}
-      onMouseEnter={() => setIsSignUpHovered(true)}
-      onMouseLeave={() => setIsSignUpHovered(false)}
-    >
-      <Button title="Signup" onPress={handleSignUpPress} style={[styles.buttonText, styles.signUpText]}/>
-    </TouchableOpacity>
-  </View>
+      <TouchableOpacity
+        style={[styles.button, styles.signUpButton, isSignUpHovered && styles.signUpHovered]}
+        onPress={handleSignUpPress}
+        onMouseEnter={() => setIsSignUpHovered(true)}
+        onMouseLeave={() => setIsSignUpHovered(false)}
+      >
+        <Button title="Signup" onPress={handleSignUpPress} style={[styles.buttonText, styles.signUpText]}/>
+      </TouchableOpacity>
+    </View>
 );
 };
 

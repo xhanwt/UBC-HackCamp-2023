@@ -5,7 +5,7 @@ import authService from '../services/authServices';
 const UserProfileScreen = () => {
     return (
         <View>
-            
+        
         </View>
     );
 };

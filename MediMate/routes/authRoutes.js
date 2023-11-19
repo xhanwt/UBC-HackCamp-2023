@@ -1,6 +1,5 @@
 // routes/authRoutes.js
 const express = require('express');
-const bcrypt = require('bcrypt');
 const User = require('../models/User');
 const router = express.Router();
 
@@ -15,30 +14,16 @@ router.post('/login', async (req, res) => {
       return res.status(404).json({ error: 'User not found' });
     }
 
-    let passwordMatch;
+    
     console.log('Entered email:', email);
     console.log('Entered password:', password);
-    console.log('Stored hashed password:', user.password);
-    console.log('Password match result:', passwordMatch);
+    console.log('Stored password:', user.password);
 
-    try {
-      console.log('Before bcrypt.compare');
-      passwordMatch = await bcrypt.compare(password, user.password);
-      console.log('After bcrypt.compare');
-      console.log('Password match result:', passwordMatch);
-    }catch (compareError) {
-      console.error('Password comparison error: ', compareError);
-      return res.status(500).json({error: 'Internal server error'});
-    }
-    
-
-    if (!passwordMatch) {
+    if(password !== user.password) {
       return res.status(401).json({ error: 'Incorrect password' });
     }
 
-    // If the password matches, you can generate a token and send it to the client
-    // For simplicity, we're just sending a success message here
-    res.json({ success: true, user });
+    return res.json({ success: true, user });
 
   } catch (error) {
     console.error('Login error:', error);
@@ -56,14 +41,12 @@ router.post('/signup', async (req, res) => {
       if (existingUser) {
         return res.status(400).json({ error: 'Email is already in use' });
       }
-  
-      // Hash the password
-      const hashedPassword = await bcrypt.hash(password, 10);
+
   
       // Create a new user
       const newUser = new User({
         email,
-        password: hashedPassword,
+        password,
         name,
         gender,
         healthCardNumber,
