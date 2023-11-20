@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, ImageBackground, Image } from 'react-native';
 import authService from '../services/authServices';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
@@ -9,6 +10,7 @@ const LoginScreen = ({ navigation }) => {
   const handleLogin = async () => {
     try {
       const user = await authService.login(email, password);
+      await AsyncStorage.setItem('userEmail', user.email);
       navigation.navigate('UserProfile', { user });
     } catch (error) {
       // Handle login error

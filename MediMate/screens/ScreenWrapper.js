@@ -14,11 +14,11 @@ const ScreenWrapper = ({ children }) => {
 
 const styles = StyleSheet.create({
     container: {
-      flex: 1,
+        flex:1
     },
     content: {
-      flex: 1,
-      marginBottom: 0, // Adjust this margin to control the space between content and bottom tab navigator
+        flex:1,
+        marginBottom: 0, 
     },
   });
   

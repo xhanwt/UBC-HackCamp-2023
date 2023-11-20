@@ -18,6 +18,15 @@ const userSchema = new mongoose.Schema({
     medications: [medicationSchema],
 });
 
+userSchema.methods.addMedication = async function (medication) {
+    try {
+      this.medications.push(medication);
+      await this.save();
+    } catch (error) {
+      throw error;
+    }
+  };
+
 
 const User = mongoose.model('User', userSchema);
 
