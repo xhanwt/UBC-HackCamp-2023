@@ -47,4 +47,4 @@ MediMate is a React Native app developed during Hackcamp 2023 in November. It se
 
 ## Demo
 
-https://www.youtube.com/watch?feature=shared&v=aeKvb2fEFdg&ab_channel=SaemiPark
+[Watch Demo] (https://www.youtube.com/watch?feature=shared&v=aeKvb2fEFdg&ab_channel=SaemiPark)
