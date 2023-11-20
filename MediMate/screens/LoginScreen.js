@@ -1,7 +1,9 @@
+
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, ImageBackground, Image } from 'react-native';
 import authService from '../services/authServices';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
@@ -17,6 +19,7 @@ const LoginScreen = ({ navigation }) => {
       console.error('Login failed:', error);
     }
   };
+
 
   return (
     <ImageBackground
