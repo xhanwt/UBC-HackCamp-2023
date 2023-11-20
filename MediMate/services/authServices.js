@@ -30,6 +30,12 @@ const AuthService = {
       });
 
       // Handle successful signup
+      const user = response.data;
+
+      // Store user data in AsyncStorage
+      await AsyncStorage.setItem('userData', JSON.stringify(user));
+
+      return user;
       return response.data;
     } catch (error) {
       // Handle signup error

@@ -34,7 +34,7 @@ router.post('/login', async (req, res) => {
 // Route to handle user registration
 router.post('/signup', async (req, res) => {
   try {
-    const { email, password, name, gender, healthCardNumber } = req.body;
+    const { email, password, name, healthCardNumber } = req.body;
 
     // Check if the email is already in use
     const existingUser = await User.findOne({ email });
@@ -48,7 +48,6 @@ router.post('/signup', async (req, res) => {
       email,
       password,
       name,
-      gender,
       healthCardNumber,
     });
 

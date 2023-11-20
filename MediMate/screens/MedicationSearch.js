@@ -5,6 +5,7 @@ import ScreenWrapper from './ScreenWrapper';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import BottomTabNavigator from './BottomTabNavigator';
 import { useNavigation } from '@react-navigation/native';
+import DatePicker from '@react-native-community/datetimepicker';
 
 
 // Get user email from AsyncStorage
@@ -26,6 +27,8 @@ const MedicationSearch = () => {
   const [addButtonVisible, setAddButtonVisible] = useState(true);
   const [dosage, setDosage] = useState('');
   const [frequency, setFrequency] = useState('');
+  //const [startDate, setStartDate] = useState(new Date());
+  //const [endDate, setEndDate] = useState(new Date());
 
   const handleAddMedication = () => {
     if(medicationName !== '') {
@@ -47,6 +50,8 @@ const MedicationSearch = () => {
         name: medicationData.genericUse,
         dosage: dosage,
         frequency: frequency,
+        //startDate: startDate,
+        //endDate: endDate,
       };
   
       // Add the new medication to the existing medications array
@@ -60,6 +65,8 @@ const MedicationSearch = () => {
       setFrequency('');
       setIsAddingMedication(false);
       setAddButtonVisible(true);
+      //setStartDate(new Date()); // Reset startDate to the current date
+      //setEndDate(new Date()); // Reset endDate to the current date
   
       // Optional: Navigate to a different screen or show a success message
       // navigation.navigate('UserProfile');
@@ -150,6 +157,12 @@ const MedicationSearch = () => {
                 value={frequency}
                 onChangeText={(text) => setFrequency(text)}
               />
+              
+              {/* <Text style={styles.formLabel}>Start Date:</Text>
+              <DatePicker date={startDate} onDateChange={setStartDate} />
+
+              <Text style={styles.formLabel}>End Date:</Text>
+              <DatePicker date={endDate} onDateChange={setEndDate} /> */}
               <Button title="Save" onPress={handleSaveMedication} color="#3498db" />
             </View>
           )}

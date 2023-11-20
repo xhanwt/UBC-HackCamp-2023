@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, ScrollView, TouchableOpacity, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome'; // You can choose any icon library you prefer
 
@@ -27,24 +27,41 @@ const BottomNavBar = () => {
 
   return (
     <View style={styles.container}>
-      {renderTab('UserProfile', 'user')}
-      {renderTab('Medications', 'medkit')}
-      {renderTab('MedicationSearch', 'search')}
-      {renderTab('CalendarPage', 'calendar')}
+      <ScrollView contentContainerStyle={styles.contentContainer}>
+        {/* Your scrollable content goes here */}
+        {/* Add more views, components, or use a FlatList for a dynamic list */}
+      </ScrollView>
+
+      <View style={styles.bottomBar}>
+        {renderTab('UserProfile', 'user')}
+        {renderTab('Medications', 'medkit')}
+        {renderTab('MedicationSearch', 'search')}
+        {renderTab('CalendarPage', 'calendar')}
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
+  },
+  contentContainer: {
+    flexGrow: 1,
+    justifyContent: 'flex-start',
+    paddingBottom: 60, // Adjust this value based on the height of your bottom navigation bar
+  },
+  bottomBar: {
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
     backgroundColor: '#eee', // Optional: Set a background color for the navigation bar
     paddingVertical: 10,
-    position: 'fixed',
+    position: 'absolute',
     bottom: 0,
-    width: '100%',
+    left: 0,
+    right: 0,
+    zIndex: 999, // Make sure the navigation bar stays above other content
   },
   button: {
     padding: 10,

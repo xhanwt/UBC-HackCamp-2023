@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, Picker } from 'react-native';
+import { View, Text, TextInput, Button, StyleSheet} from 'react-native';
+import { Picker } from 'react-native-picker';
 import AuthService from '../services/authServices';
 import { useNavigation } from '@react-navigation/native';
 
@@ -53,7 +54,7 @@ const SignupScreen = () => {
         value={name}
         onChangeText={(text) => setName(text)}
       />
-      <View style={styles.pickerContainer}>
+      {/* <View style={styles.pickerContainer}>
         <Text style={styles.pickerLabel}>Gender</Text>
         {isOtherSelected ? (
           <TextInput
@@ -72,7 +73,7 @@ const SignupScreen = () => {
             ))}
           </Picker>
         )}
-      </View>
+      </View> */}
       <TextInput
         style={styles.input}
         placeholder="Health Card Number"

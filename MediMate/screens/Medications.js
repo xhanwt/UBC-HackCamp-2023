@@ -42,6 +42,8 @@ const Medications = () => {
               <Text style={styles.medicationName}>{item.name}</Text>
               <Text>Dosage: {item.dosage}</Text>
               <Text>Frequency: {item.frequency}</Text>
+              {/* <Text>Start Date: {new Date(item.startDate).toDateString()}</Text>
+              <Text>End Date: {new Date(item.endDate).toDateString()}</Text> */}
             </View>
           )}
         />
