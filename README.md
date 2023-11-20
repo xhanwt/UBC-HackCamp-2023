@@ -45,20 +45,5 @@ MediMate is a React Native app developed during Hackcamp 2023 in November. It se
 
 ## Demo
 
-- Include screenshots or gifs demonstrating the functionality of the app.
+https://www.youtube.com/watch?feature=shared&v=aeKvb2fEFdg&ab_channel=SaemiPark
 
-## Contribution Guidelines
-
-1. Fork the repository.
-2. Create a new branch: `git checkout -b feature/new-feature`.
-3. Make your changes and commit them: `git commit -m 'Add new feature'`.
-4. Push to the branch: `git push origin feature/new-feature`.
-5. Submit a pull request.
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
-
----
-
-Feel free to customize this template according to your project's specific details and requirements. Good luck with your React Native app development!
